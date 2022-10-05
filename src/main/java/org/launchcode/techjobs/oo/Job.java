@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
 
     private String name;
@@ -100,6 +100,53 @@ public class Job {
         return nextId;
     }
 
+@Override
+    public String toString() {
+    String finalString = "\nID: " + this.getId() + '\n';
+    int nullCount = 0;
+    //return finalString;
+
+    if (this.name == null || this.name.equals("")) {
+        finalString += "Name: Data not available\n";
+        nullCount += 1;
+    } else {
+        finalString += "Name: " + this.name + '\n';
+    }
+
+    if (this.employer == null || this.employer.getValue().equals("")) {
+        finalString += "Employer: Data not available\n";
+        nullCount += 1;
+    } else {
+        finalString += "Employer: " + this.employer.getValue() + '\n';
+    }
+
+    if (this.location == null || this.location.getValue().equals("")) {
+        finalString += "Location: Data not available\n";
+        nullCount += 1;
+    } else {
+        finalString += "Location: " + this.location.getValue() + '\n';
+    }
+
+    if (this.positionType == null || this.positionType.getValue().equals("")) {
+        finalString += "Position Type: Data not available\n";
+        nullCount += 1;
+    } else {
+        finalString += "Position Type: " + this.positionType.getValue() + '\n';
+    }
+
+    if (this.coreCompetency == null || this.coreCompetency.getValue().equals("")) {
+        finalString += "Core Competency: Data not available\n";
+        nullCount += 1;
+    } else {
+        finalString += "Core Competency: " + this.coreCompetency.getValue() + '\n';
+    }
+
+    if (nullCount == 5) {
+        return "OOPS! This job does not seem to exist.";
+    } else {
+        return finalString;
+    }
+}
 
 
 }
